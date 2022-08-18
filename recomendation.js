@@ -1,3 +1,16 @@
+// 1. array and strings
+// 2. First Unique Character in a String
+// 3. Number of Islands
+// 4. Cut Off Trees for Golf Event
+// 5. Flood Fill
+// 6. Lowest Common Ancestor of a Binary Tree
+// 7. Diameter of Binary Tree
+// 8. Flood Fill
+// 9. Kth Largest Element in an Array
+// 10. Best Time to Buy and Sell Stock
+// 11. LRU Cache
+// 12. Prison Cells After N Days
+
 // array and strings
 // Integer to English Words
 const numberToWords = function (num) {
@@ -82,16 +95,6 @@ const numberToWords = function (num) {
 // First Unique Character in a String
 //Given a string s, find the first non-repeating character in it and return its index. If it does not exist, return -1.
 const firstUniqChar = function (s) {
-    // const hashMap = new Map();
-
-    // for (let i = 0; i < s.length; i++) {
-    //     if (!hashMap.get(s[i]) && s.substring(i + 1).indexOf(s[i]) === -1) {
-    //         return i;
-    //     }
-
-    //     hashMap.set(s[i], true);
-    // }
-
     const hashMap = new Map();
 
     for (let i = 0; i < s.length; i++) {
@@ -156,48 +159,6 @@ const numIslands = function (grid) {
 
 // Lowest Common Ancestor of a Binary Tree
 const lowestCommonAncestor = function (root, p, q) {
-    // function getPath(root, val) {
-    //     if (!root) {
-    //         return [];
-    //     }
-
-    //     if (root.val === val) {
-    //         return [root];
-    //     }
-
-    //     const left = getPath(root.left, val);
-    //     const right = getPath(root.right, val);
-
-    //     if (left.length) {
-    //         return [root].concat(left);
-    //     }
-
-    //     if (right.length) {
-    //         return [root].concat(right);
-    //     }
-
-    //     return [];
-    // }
-
-    // const pPath = getPath(root, p);
-    // const qPath = getPath(root, q);
-    // let leastCommon;
-
-    // while (pPath.length || qPath.length) {
-    //     const nodeP = pPath.shift();
-    //     const nodeQ = qPath.shift();
-
-    //     if (nodeP === nodeQ) {
-    //         if (!leastCommon) {
-    //             leastCommon = nodeP;
-    //         } else if (leastCommon.val > nodeP.val) {
-    //             leastCommon = nodeP;
-    //         }
-    //     }
-    // }
-
-    // return leastCommon;
-
     const stack = [root];
     const parent = new WeakMap();
 
@@ -230,15 +191,15 @@ const lowestCommonAncestor = function (root, p, q) {
 
     return q;
 };
-const root2 = new TreeNode(3);
-root2.left = new TreeNode(5);
-root2.right = new TreeNode(1);
-root2.left.left = new TreeNode(6);
-root2.left.right = new TreeNode(2);
-root2.right.left = new TreeNode(0);
-root2.right.right = new TreeNode(8);
-root2.left.right.left = new TreeNode(7);
-root2.left.right.right = new TreeNode(4);
+// const root2 = new TreeNode(3);
+// root2.left = new TreeNode(5);
+// root2.right = new TreeNode(1);
+// root2.left.left = new TreeNode(6);
+// root2.left.right = new TreeNode(2);
+// root2.right.left = new TreeNode(0);
+// root2.right.right = new TreeNode(8);
+// root2.left.right.left = new TreeNode(7);
+// root2.left.right.right = new TreeNode(4);
 // lowestCommonAncestor(root2, root2.left, root2.right);
 
 // Diameter of Binary Tree
@@ -384,42 +345,6 @@ const cutOffTree = function (forest) {
     return ans;
 };
 
-// console.log(
-//     cutOffTree([
-//         [1, 2, 3],
-//         [0, 0, 4],
-//         [7, 6, 5],
-//     ])
-// );
-
-// console.log(
-//     cutOffTree([
-//         [2, 3, 4],
-//         [0, 0, 5],
-//         [8, 7, 6],
-//     ])
-// );
-
-// console.log(
-//     cutOffTree([
-//         [2, 3, 4],
-//         [0, 0, 0],
-//         [8, 7, 6],
-//     ])
-// );
-
-// console.log(cutOffTree([[0], [0], [6014]]));
-
-// console.log(
-//     cutOffTree([
-//         [54581641, 64080174, 24346381, 69107959],
-//         [86374198, 61363882, 68783324, 79706116],
-//         [668150, 92178815, 89819108, 94701471],
-//         [83920491, 22724204, 46281641, 47531096],
-//         [89078499, 18904913, 25462145, 60813308],
-//     ])
-// );
-
 // Flood Fill
 const floodFill = function (image, sr, sc, color) {
     const R = image.length;
@@ -484,6 +409,7 @@ const maxProfit = function (prices) {
 };
 
 // LRU Cache
+
 // Design a data structure that follows the constraints of a Least Recently Used (LRU) cache.
 
 // Implement the LRUCache class:
@@ -617,84 +543,6 @@ LRUCache.prototype.put = function (key, value) {
     return null;
 };
 
-/**
- * Your LRUCache object will be instantiated and called as such:
- */
-// const obj = new LRUCache(2);
-// const param_1 = obj.get(1);
-// obj.put(1, 1);
-
-// console.log(obj);
-// console.log(obj.get(2));
-
-// const a = [
-//     'LRUCache',
-//     'put',
-//     'put',
-//     'put',
-//     'put',
-//     'get',
-//     'get',
-//     'get',
-//     'get',
-//     'put',
-//     'get',
-//     'get',
-//     'get',
-//     'get',
-//     'get',
-// ];
-// const b = [
-//     [3],
-//     [1, 1],
-//     [2, 2],
-//     [3, 3],
-//     [4, 4],
-//     [4],
-//     [3],
-//     [2],
-//     [1],
-//     [5, 5],
-//     [1],
-//     [2],
-//     [3],
-//     [4],
-//     [5],
-// ];
-
-// const a = ['LRUCache', 'get', 'put', 'get', 'put', 'put', 'get', 'get'];
-
-// const b = [[2], [2], [2, 6], [1], [1, 5], [1, 2], [1], [2]];
-
-// let obj;
-
-// a.forEach((operation, i) => {
-//     if (operation === 'LRUCache') {
-//         obj = new LRUCache(...b[i]);
-//         console.log(obj);
-//     } else {
-//         console.log(obj[operation](...b[i]));
-//     }
-// });
-
-//  Input
-//  ["LRUCache", "put", "put", "get", "put", "get", "put", "get", "get", "get"]
-//  [[2], [1, 1], [2, 2], [1], [3, 3], [2], [4, 4], [1], [3], [4]]
-//  Output
-//  [null, null, null, 1, null, -1, null, -1, 3, 4]
-
-//  Explanation
-//  LRUCache lRUCache = new LRUCache(2);
-//  lRUCache.put(1, 1); // cache is {1=1}
-//  lRUCache.put(2, 2); // cache is {1=1, 2=2}
-//  lRUCache.get(1);    // return 1
-//  lRUCache.put(3, 3); // LRU key was 2, evicts key 2, cache is {1=1, 3=3}
-//  lRUCache.get(2);    // returns -1 (not found)
-//  lRUCache.put(4, 4); // LRU key was 1, evicts key 1, cache is {4=4, 3=3}
-//  lRUCache.get(1);    // return -1 (not found)
-//  lRUCache.get(3);    // return 3
-//  lRUCache.get(4);    // return 4
-
 // Prison Cells After N Days
 
 /**
@@ -735,15 +583,3 @@ const prisonAfterNDays = function (cells, n) {
 };
 
 // console.log(prisonAfterNDays([1, 0, 0, 1, 0, 0, 1, 0], 1000000000));
-
-// Input: cells = [0,1,0,1,1,0,0,1], n = 7
-// Output: [0,0,1,1,0,0,0,0]
-// Explanation: The following table summarizes the state of the prison on each day:
-// Day 0: [0, 1, 0, 1, 1, 0, 0, 1]
-// Day 1: [0, 1, 1, 0, 0, 0, 0, 0]
-// Day 2: [0, 0, 0, 0, 1, 1, 1, 0]
-// Day 3: [0, 1, 1, 0, 0, 1, 0, 0]
-// Day 4: [0, 0, 0, 0, 0, 1, 0, 0]
-// Day 5: [0, 1, 1, 1, 0, 1, 0, 0]
-// Day 6: [0, 0, 1, 0, 1, 1, 0, 0]
-// Day 7: [0, 0, 1, 1, 0, 0, 0, 0]

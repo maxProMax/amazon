@@ -1,15 +1,10 @@
-// 1. array and strings
+// 1. Integer to English Words
 // 2. First Unique Character in a String
 // 3. Number of Islands
-// 4. Cut Off Trees for Golf Event
-// 5. Flood Fill
-// 6. Lowest Common Ancestor of a Binary Tree
-// 7. Diameter of Binary Tree
-// 8. Flood Fill
-// 9. Kth Largest Element in an Array
-// 10. Best Time to Buy and Sell Stock
-// 11. LRU Cache
-// 12. Prison Cells After N Days
+// 4. Kth Largest Element in an Array
+// 5. Best Time to Buy and Sell Stock
+// 6. LRU Cache
+// 7. Prison Cells After N Days
 
 // array and strings
 // Integer to English Words
@@ -156,154 +151,6 @@ const numIslands = function (grid) {
 //     ['0', '0', '1', '0', '0'],
 //     ['0', '0', '0', '1', '1'],
 // ]);
-
-// Lowest Common Ancestor of a Binary Tree
-const lowestCommonAncestor = function (root, p, q) {
-    const stack = [root];
-    const parent = new WeakMap();
-
-    parent.set(root, null);
-
-    while (!parent.has(p) || !parent.has(q)) {
-        const node = stack.pop();
-
-        if (node.left) {
-            parent.set(node.left, node);
-            stack.push(node.left);
-        }
-
-        if (node.right) {
-            parent.set(node.right, node);
-            stack.push(node.right);
-        }
-    }
-
-    const ancestors = new Set();
-
-    while (p) {
-        ancestors.add(p);
-        p = parent.get(p);
-    }
-
-    while (!ancestors.has(q)) {
-        q = parent.get(q);
-    }
-
-    return q;
-};
-// const root2 = new TreeNode(3);
-// root2.left = new TreeNode(5);
-// root2.right = new TreeNode(1);
-// root2.left.left = new TreeNode(6);
-// root2.left.right = new TreeNode(2);
-// root2.right.left = new TreeNode(0);
-// root2.right.right = new TreeNode(8);
-// root2.left.right.left = new TreeNode(7);
-// root2.left.right.right = new TreeNode(4);
-// lowestCommonAncestor(root2, root2.left, root2.right);
-
-// Diameter of Binary Tree
-// Given the root of a binary tree, return the length of the diameter of the tree.
-
-// The diameter of a binary tree is the length of the longest path between any two nodes in a tree. This path may or may not pass through the root.
-
-// The length of a path between two nodes is represented by the number of edges between them.
-const diameterOfBinaryTree = function (root) {
-    function height(root) {
-        if (!root) {
-            return 0;
-        }
-
-        const leftH = height(root.left);
-        const rightH = height(root.right);
-
-        return 1 + Math.max(leftH, rightH);
-    }
-
-    if (!root) {
-        return 0;
-    }
-
-    const leftH = height(root.left);
-    const rightH = height(root.right);
-
-    const leftD = diameterOfBinaryTree(root.left);
-    const rightD = diameterOfBinaryTree(root.right);
-
-    // if needs nodes count , uncomment
-    // return Math.max(1 + leftH + rightH, Math.max(leftD, rightD));
-    // count of edges
-    return Math.max(leftH + rightH, Math.max(leftD, rightD));
-};
-
-const root3 = new TreeNode(1);
-root3.left = new TreeNode(2);
-root3.right = new TreeNode(3);
-root3.left.left = new TreeNode(4);
-root3.left.right = new TreeNode(5);
-
-// console.log(diameterOfBinaryTree(root3));
-
-//  Cut Off Trees for Golf Event
-const cutOffTree = function (forest) {
-    let trees = [];
-
-    for (let r = 0; r < forest.length; r++) {
-        for (let c = 0; c < forest[0].length; c++) {
-            const v = forest[r][c];
-            if (v > 1) {
-                trees.push([v, r, c]);
-            }
-        }
-    }
-
-    trees = trees.sort((a, b) => a[0] - b[0]);
-
-    let sr = 0;
-    let sc = 0;
-    let ans = 0;
-
-    for (const [, tr, tc] of trees) {
-        const a = sr - tr;
-        const b = sc - tc;
-
-        const d = Math.sqrt(a * a + b * b);
-
-        if (d < 0) {
-            return -1;
-        }
-
-        ans += d;
-
-        [sr, sc] = [tr, tc];
-    }
-
-    return ans;
-};
-
-// Flood Fill
-const floodFill = function (image, sr, sc, color) {
-    const R = image.length;
-    const C = image[0].length;
-    const oldColor = image[sr][sc];
-
-    if (color === oldColor) {
-        return image;
-    }
-
-    function dfs(r, c) {
-        if (image[r][c] === oldColor) {
-            image[r][c] = color;
-            r >= 1 && dfs(r - 1, c);
-            r + 1 < R && dfs(r + 1, c);
-            c >= 1 && dfs(r, c - 1);
-            c + 1 < C && dfs(r, c + 1);
-        }
-    }
-
-    dfs(sr, sc);
-    return image;
-};
 
 // Sorting and Search
 // Kth Largest Element in an Array
